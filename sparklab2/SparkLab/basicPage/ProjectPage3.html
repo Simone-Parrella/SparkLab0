@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pagina progetto espositiva</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+  <style>
+    body {
+      background-color: rgb(57, 61, 70);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+
+
+
+
+
+
+    nav {
+      background-color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 5px;
+      /* Aggiungi del padding per separare il contenuto dal bordo */
+      box-shadow: 0 4px 0px 0px orangered;
+    }
+
+    .navbar {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .navbar li {
+      margin-right: 20px;
+    }
+
+    .navbar li:first-child {
+      margin-right: 10px;
+    }
+
+    .navbar li:last-child {
+      margin-left: auto;
+    }
+
+    .navbar li a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: color 0.3s;
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+    }
+
+    .navbar li a:hover {
+      color: orange;
+    }
+
+    .navbar li a:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 165, 0, 0.3);
+      border-radius: 5px;
+      z-index: -1;
+    }
+
+    .logo {
+      display: flex;
+      align-items: flex-start;
+      max-width: 30%;
+    }
+
+    .logo img {
+      max-height: 100%;
+      width: 175px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .login-button {
+      background-color: orangered;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #ff8533;
+    }
+
+
+
+    .add-resource-container {
+      padding: 20px;
+      float: left;
+    }
+
+
+
+    h1 {
+      font-size: 24px;
+      color: #276c98;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #276c98;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    li {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .btn-primary {
+      background-color: #276c98;
+      border-color: #276c98;
+    }
+
+    .btn-primary:hover {
+      background-color: #0e5071;
+      border-color: #0e5071;
+    }
+
+    #requestsDiv {
+      float: right;
+      width: 40%;
+    }
+
+
+
+
+
+
+
+
+
+    .page-top {
+  		position: relative;
+		}
+
+
+
+		.page-top::before {
+   		 content: "";
+   		 position: absolute;
+   		 top: 0;
+    		left: 0;
+    		right: 0;
+    		height: auto;
+    		background-color: rgba(255, 255, 255, 0.2);
+    		z-index: -1;
+		}
+
+
+
+
+
+
+		.container {
+			text-align: center;
+			padding-top: 50px;
+		}
+
+		#title-container {
+  		background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  		padding: 20px;
+		}
+
+		#title {
+  		color: rgb(255, 100, 40);
+  		font-size: 60px;
+ 		font-weight: bold;
+  		text-transform: uppercase;
+  		margin-bottom: 20px;
+  		-webkit-text-stroke-width: 2px;
+  		-webkit-text-stroke-color: black;
+		}
+
+		#descr {
+  		font-size: 30px;
+  		margin-bottom: 40px;
+		}
+
+		hr {
+  		height: 2px;
+  		background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(240, 240, 240, 1), rgba(240, 240, 240, 0));
+  		margin: 40px 0;
+  		border: none;
+		}
+
+		.list-title {
+			color: white;
+			font-size: 32px;
+		}
+
+		.card {
+			background-color: #333333;
+			border-radius: 10px;
+			padding: 10px;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			margin-bottom: 20px;
+			border: 2px solid orangered;
+		}
+
+
+
+
+
+
+
+    .card.small-card { /*access requests*/
+      width: 800px;
+      height: 200px;
+      margin-top: 350px;
+      margin-left: -135px;
+      overflow: hidden;
+    }
+
+	.card.small-card2 { /*add resource*/
+      width: 800px;
+      height: 200px;
+      margin-top: 400px;
+      margin-left: -150px;
+      overflow: hidden;
+    }
+    
+    .card.medium-card { /*project areas*/
+      margin-left: -290px;
+      margin-top: 150px;
+      width: 800px;
+      height: 250px;
+      overflow: hidden;
+
+    }
+
+    .card.large-card { /*project resources*/
+      margin-left: -180px;
+      margin-top: 100px;
+      width: 800px;
+      height: 300px;
+      overflow: hidden;
+    }
+
+
+
+
+
+
+
+    .left-section {
+      margin-left: -200px;
+      float: left;
+      width: 20%;
+      padding: 0 10px;
+    }
+
+    .right-section {
+      margin-right: -400px;
+      float: right;
+      width: 50%;
+      padding: 0 10px;
+    }
+
+    .list-container {
+      text-align: left;
+    }
+
+    .list-container ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      overflow-y: scroll;
+      max-height: 300px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #f0f0f0;
+    }
+
+
+
+
+    .modifybox {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    
+    
+    #subscribeBtn {
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: orangered;
+  color: white;
+}
+
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<body onload="loadProj()">
+
+
+
+
+  <nav>
+    <div class="logo">
+      <a href="/basicPage/HomePage.html"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+    </div>
+
+    <ul class="navbar">
+      <li><a href="/basicPage/ProjectCreation.html">Create new project</a></li>
+      <li><a href="">Edit project infos</a></li>
+      <li><a href="/basicPage/ResCreation.html">manage resources</a></li>
+      <li><a href="#">manage proj. areas</a></li>
+      <li><button class="login-button"> <a href="/basicPage/login.html"> Logout</a></button></li>
+    </ul>
+
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container page-top">
+  <div id="title-container">
+    <h1 id="title">pr_name</h1>
+    <p id="descr">Project-des-plc</p>
+  </div>
+</div>
+
+<hr>
+  
+  <div>
+  <button id="subscribeBtn" class="btn btn-primary">SUBSCRIBE</button>
+</div>
+
+  <div class="container">
+    <div class="left-section">
+      <div class="card large-card">
+        <h2 class="list-title">PROJECT RESOURCES</h2>
+        <div class="list-container">
+          <ul id="list">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="card medium-card">
+        <h2 class="list-title">PROJECT AREAS</h2>
+        <div class="list-container">
+          <ul id="areas">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var prgId;
+
+  function loadProj() {
+    console.log("unto");
+    // Recupera l'URL corrente
+    const urlParams = new URLSearchParams(window.location.search);
+    // Recupera il valore del parametro "id"
+    const id = urlParams.get('id');
+    // Stampa il valore del parametro "id"
+
+    // Invia richiesta per il recupero del progetto tramite id
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/' + id)
+            .then(response => response.json())
+            .then(data => {
+              fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/UserAPI/users/sessionWithProjects')
+                      .then(response1 => response1.json())
+                      .then(data1 => {
+                        const title = document.getElementById("title");
+                        console.log(data.name);
+                        title.innerHTML = data.name;
+                        const descr = document.getElementById("descr");
+                        console.log(data.name);
+                        descr.innerHTML = data.description;
+                        const areas = document.getElementById("areas");
+
+                        // Costruisce una lista delle Project Areas
+                        if (data.projectAreas.length === 0) {
+                          const li = document.createElement("li");
+                          li.innerHTML = "No project areas for this project";
+                          areas.appendChild(li);
+                        } else {
+                          data.projectAreas.forEach(function (area) {
+                            const li = document.createElement("li");
+                            li.innerHTML = area;
+                            areas.appendChild(li);
+                          });
+                        }
+
+                        const list = document.getElementById("list");
+                        console.log(data.resources.length);
+
+                        // Costruisce una lista dinamica delle risorse di un progetto
+                        if (data.resources.length === 0) {
+                          const li = document.createElement("li");
+                          li.innerHTML = "No resources for this project";
+                          list.appendChild(li);
+                        } else {
+                          data.resources.forEach(function (element) {
+                            console.log(element)
+                            const li = document.createElement("li");
+                            li.innerHTML = element.name;
+                            li.addEventListener("mouseover", function () {
+                              this.style.color = "#276c98";
+                            });
+                            li.addEventListener("mouseout", function () {
+                              this.style.color = "#fff";
+                            });
+                            li.addEventListener("mouseover", function () {
+                              this.style.cursor = "pointer";
+                            });
+                            // Qui vanno messi i link alle risorse più avanti
+                            li.addEventListener("click", function () {
+                              //window.location.href = 'http://' + location.hostname + ':' + location.port + '/basicPage/ShowR.html?id='+id +'&Rid='+ element._id;
+                            });
+                            list.appendChild(li);
+                          });
+                        }
+
+                        const subscribeBtn = document.getElementById("subscribeBtn");
+                        subscribeBtn.addEventListener("click", function () {
+                          sendSubscriptionRequest(id);
+                        });
+                      });
+            });
+  }
+
+  function sendSubscriptionRequest(projectId) {
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/UserAPI/users/subP/' + projectId, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+            .then(function(response) {
+              if (response.ok) {
+                console.log("Richiesta di abbonamento inviata con successo.");
+                // Reindirizza l'utente alla pagina dell'utente dopo l'abbonamento
+                window.location.href = 'http://' + location.hostname + ':' + location.port + '/basicPage/UserPage.html';
+              } else {
+                throw new Error("Error: " + response.status);
+              }
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+  }
+</script>
+</body>
+</html>

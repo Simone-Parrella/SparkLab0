@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nome del Progetto</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .container {
+      margin-top: 50px;
+      background-color: #222;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      background-color: lightslategrey;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #276c98;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #276c98;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    li {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .btn-primary {
+      background-color: #276c98;
+      border-color: #276c98;
+    }
+
+    .btn-primary:hover {
+      background-color: #0e5071;
+      border-color: #0e5071;
+    }
+
+    #requestsDiv {
+      float: right;
+      width: 40%;
+    }
+  </style>
+</head>
+<body onload="loadProj()">
+
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">Pagina Progetto</a>
+</nav>
+
+<div class="container">
+  <h1 id="title">pr_name</h1>
+  <p id="descr">Project-des-plc</p>
+
+  <h2>Project Areas:</h2>
+  <ul id="areas">
+    <!-- Aggiungi altri elementi della lista per ogni area di progetto -->
+  </ul>
+
+  <h2>Risorse del progetto</h2>
+  <ul id="list">
+    <!-- Aggiungi altri elementi della lista per ogni risorsa -->
+  </ul>
+</div>
+
+<div id="requestsDiv" class="container">
+  <h2>Richieste di accesso</h2>
+  <ul id="listRic">
+  </ul>
+</div>
+
+<script>
+  var prgId;
+
+  function loadProj() {
+    console.log("unto");
+    // Recupera l'URL corrente
+    const urlParams = new URLSearchParams(window.location.search);
+    // Recupera il valore del parametro "id"
+    const id = urlParams.get('id');
+    // Stampa il valore del parametro "id"
+
+    // Invia richiesta per il recupero del progetto tramite id
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/' + id)
+            .then(response => response.json())
+            .then(data => {
+              fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/UserAPI/users/sessionWithProjects')
+                      .then(response1 => response1.json())
+                      .then(data1 => {
+                        const title = document.getElementById("title");
+                        console.log(data.name);
+                        title.innerHTML = data.name;
+                        const descr = document.getElementById("descr");
+                        console.log(data.name);
+                        descr.innerHTML = data.description;
+                        const areas = document.getElementById("areas");
+
+                        // Costruisce una lista delle Project Areas
+                        if (data.projectAreas.length === 0) {
+                          const li = document.createElement("li");
+                          li.innerHTML = "No project areas for this project";
+                          areas.appendChild(li);
+                        } else {
+                          data.projectAreas.forEach(function (area) {
+                            const li = document.createElement("li");
+                            li.innerHTML = area;
+                            areas.appendChild(li);
+                          });
+                        }
+
+                        const list = document.getElementById("list");
+                        console.log(data.resources.length);
+
+                        // Costruisce una lista dinamica delle risorse di un progetto
+                        if (data.resources.length === 0) {
+                          const li = document.createElement("li");
+                          li.innerHTML = "No resources for this project";
+                          list.appendChild(li);
+                        } else {
+                          data.resources.forEach(function (element) {
+                            const li = document.createElement("li");
+                            li.innerHTML = element;
+                            li.addEventListener("mouseover", function () {
+                              this.style.color = "#276c98";
+                            });
+                            li.addEventListener("mouseout", function () {
+                              this.style.color = "#fff";
+                            });
+                            li.addEventListener("mouseover", function () {
+                              this.style.cursor = "pointer";
+                            });
+                            // Qui vanno messi i link alle risorse più avanti
+                            li.addEventListener("click", function () {
+                              window.location.href = "http://google.com";
+                            });
+                            list.appendChild(li);
+                          });
+                        }
+
+                        const listRic = document.getElementById("listRic");
+                        const ownId = data.ownerId;
+                        prgId = data.id;
+                        // Controllo se l'utente è il proprietario del progetto
+                        if (data.ownerId === data1.id) {
+                          if (data.request.length === 0) {
+                            const li = document.createElement("li");
+                            li.innerHTML = "No access requests for this project";
+                            listRic.appendChild(li);
+                          } else {
+                            data.request.forEach(function (request) {
+                              const li = document.createElement("li");
+                              li.innerHTML = request;
+
+                              const btnAccept = document.createElement("button");
+                              btnAccept.innerHTML = "Accept";
+                              btnAccept.addEventListener("click", function () {
+                                respondToRequestForProject(prgId, request, true);
+                                li.remove();
+                              });
+
+                              const btnReject = document.createElement("button");
+                              btnReject.innerHTML = "Reject";
+                              btnReject.addEventListener("click", function () {
+                                respondToRequestForProject(prgId, request, false);
+                                li.remove();
+                              });
+
+                              li.appendChild(btnAccept);
+                              li.appendChild(btnReject);
+
+                              listRic.appendChild(li);
+                            });
+                          }
+                        }
+                      });
+            });
+  }
+
+  function respondToRequestForProject(projectId, userId, decision) {
+    const url = 'http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/request/' + projectId + '/' + userId + '/' + decision;
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        decision: decision
+      })
+    })
+            .then(response => response.json())
+            .then(data => {
+              // Elabora la risposta dal server
+              console.log(data);
+              // Puoi aggiornare l'interfaccia utente o fare altre azioni in base alla risposta
+            })
+            .catch(error => {
+              console.error("Errore durante la risposta alla richiesta:", error);
+            });
+  }
+</script>
+</body>
+</html>

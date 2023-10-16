@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- LAST RELEASE 27/05/23 A.C.-->
+<head>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<meta charset="UTF-8">
+
+	<title>Pagina di registrazione</title>
+
+	<!-- Ho incluso del css esterno-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- CSS INTERNO -->
+	<style>
+		/* CSS FORM */
+		#myForm {
+			margin: 0 auto;
+			max-width: 500px;
+			padding: 20px;
+			background-color: #444;
+			border-radius: 10px;
+			margin-top: 50px;
+			text-align: center;
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: orange;
+		}
+
+		input {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: rgb(0, 0, 0);
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="date"] {
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: rgb(240, 107, 26);
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+
+		/*CSS DIV INFO*/
+		#info {
+			margin-top: 20px;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+
+		#info.show {
+			display: block;
+			color: red;
+		}
+
+
+		img {
+			display: block;
+			margin: auto;
+			width: 30%;
+		}
+
+		#image0 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 75%;
+		}
+
+		nav {
+			background-color: white;
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			padding: 0 5px;
+			/* Aggiungo del padding per separare il contenuto dal bordo */
+			box-shadow: 0 4px 0px 0px orangered;
+		}
+
+		h2 {
+
+			color: rgb(242, 123, 43);
+		}
+
+		h2:hover {
+			color: red;
+		}
+
+		.navbar {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			flex-grow: 1;
+			justify-content: center;
+		}
+
+		.navbar li {
+			margin-right: 20px;
+		}
+
+		.navbar li:first-child {
+			margin-right: 10px;
+		}
+
+		.navbar li:last-child {
+			margin-left: auto;
+		}
+
+		.navbar li a {
+			color: orange;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+			transition: color 0.3s;
+			position: relative;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		.navbar li a:hover {
+			color: red;
+		}
+
+		.navbar li a:hover::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 165, 0, 0.3);
+			border-radius: 5px;
+			z-index: -1;
+		}
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+			max-height: 100%;
+			width: 175px;
+			object-fit: contain;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body class="bg-dark">
+	<!-- NAV -->
+	<nav>
+
+		<ul class="navbar">
+
+
+			<li><a href="/basicPage/login.html">Login</a></li>
+
+		</ul>
+
+	</nav>
+	<!-- FORM DI REGISTRAZIONE-->
+	<form id="myForm">
+
+		<div>
+			<h2>Sparklab subscription page</h2>
+		</div>
+
+		<label for="name">Nome:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="surname">Cognome:</label>
+		<input type="text" id="surname" name="surname" required>
+
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+
+		<label for="nickname">Nickname:</label>
+		<input type="text" id="nickname" name="nickname" required>
+
+		<label for="email">Email:</label>
+		<input type="text" id="email" name="email" required>
+
+		<label for="birthday">Birth date:</label>
+		<input type="date" id="birthday" name="birthday" required>
+
+		<input type="submit" value="Registrati">
+
+		<div id="info">nickname or email already in use</div>
+	</form>
+
+
+	<!--Questo script è importante, consente di trasformare il contenuto del form
+in un body json, in modo che il nostro servizio possa funzionare correttamente -->
+	<script>
+
+		const form = document.querySelector("#myForm");
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+
+			const formData = new FormData(this);
+			const data = {};
+
+			formData.forEach(function (value, key) {
+				data[key] = value;
+			});
+
+			fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/UserAPI/users', {
+				method: 'post',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+					.then(response => {
+						console.log(response);
+						if (response.status === 409) {
+							var info = document.getElementById("info");
+							info.textContent = "Ci sono uno o più parametri non validi";
+							info.style.color = "red";
+							info.style.opacity = "1";
+							setTimeout(function () {
+								info.style.opacity = "0";
+							}, 3000);
+						} else {
+							window.location.href = 'http://' + location.hostname + ':' + location.port + '/basicPage/HomePage.html';
+						}
+					})
+					.catch(error => {
+						console.error("Errore durante la richiesta di registrazione:", error);
+					});
+		});
+
+	</script>
+
+</body>
+
+</html>

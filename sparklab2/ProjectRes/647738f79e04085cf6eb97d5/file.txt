@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Caricamento risorsa</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Funzione per inviare la risorsa e la descrizione al server
+      function inviaRisorsa() {
+        var formData = new FormData();
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0];
+        var descrizione = document.getElementById('descrizioneInput').value;
+
+        formData.append('file', file);
+        formData.append('descrizione', descrizione);
+
+        $.ajax({
+          url: '',
+          type: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(response) {
+            alert("Risorsa caricata con successo!");
+            // Esegui altre operazioni o aggiorna la pagina
+          },
+          error: function() {
+            alert("Si è verificato un errore durante il caricamento della risorsa.");
+          }
+        });
+      }
+
+      // Gestisci l'evento di click sul pulsante di invio
+      $("#submitBtn").click(function() {
+        inviaRisorsa();
+      });
+    });
+  </script>
+</head>
+<body>
+<h1>Caricamento risorsa</h1>
+<form>
+  <label for="fileInput">Seleziona una risorsa da caricare:</label>
+  <input type="file" id="fileInput" name="file" accept=".png, .jpg, .jpeg">
+
+  <label for="descrizioneInput">Descrizione:</label>
+  <textarea id="descrizioneInput" name="descrizione"></textarea>
+
+  <button id="submitBtn" type="button">Carica risorsa</button>
+</form>
+</body>
+</html>

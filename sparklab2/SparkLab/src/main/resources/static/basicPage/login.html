@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Please sign in</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		img {
+			display: block;
+			margin: auto;
+			width: 30%;
+		}
+
+		#image0 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 75%;
+		}
+
+
+/*bottone login --------------------------------------------------------------------------------------*/
+
+		label,
+		button {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: orange;
+			text-align: center;
+			padding: 20px;
+			border-radius: 20%;
+		}
+
+		button {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: white;
+			text-align: center;
+			padding: 12px 24px;
+			border-radius: 30px;
+			background-color: rgb(242, 123, 43);
+			border: none;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: rgb(230, 98, 18);
+		}
+
+		button:focus {
+			outline: none;
+		}
+
+		button:active {
+			transform: scale(0.95);
+		}
+		
+		
+
+		input {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: rgb(0, 0, 0);
+		}
+
+		#Layer_1 {
+			width: 15%;
+			float: right;
+		}
+
+		#card1 {
+			background-color: black;
+			border: 2px solid orange;
+			border-radius: 10px;
+		}
+
+		#myForm {
+			margin: 10px;
+			border-color: orange;
+			max-width: 500px;
+			padding: 20px;
+			background-color: #444;
+			border-radius: 10px;
+			margin-top: 50px;
+			text-align: center;
+		}
+
+/*fine bottone login --------------------------------------------------------------------------------------*/
+
+/*nav bar section -------------------------------------------------------------------------------*/
+		
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		nav {
+			background-color: white;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			padding: 0 5px;
+			box-shadow: 0 4px 0px 0px #FF7F00;
+		}
+
+		.navbar {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			flex-grow: 1;
+			justify-content: center;
+		}
+
+		.navbar li {
+			margin-right: 20px;
+		}
+
+		.navbar li:first-child {
+			margin-right: 10px;
+		}
+
+		.navbar li:last-child {
+			margin-left: auto;
+		}
+
+		.navbar li a {
+			color: black;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+			transition: color 0.3s;
+			position: relative;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		.navbar li a:hover {
+			color: orange;
+		}
+
+		.navbar li a:hover::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 165, 0, 0.3);
+			border-radius: 5px;
+			z-index: -1;
+		}
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+			max-height: 100%;
+			width: 175px;
+			object-fit: contain;
+			cursor: pointer;
+		}
+
+		.login-button {
+			background-color: #FF7F00;
+			color: white;
+			border: none;
+			padding: 4px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.3s;
+		}
+
+		.login-button:hover {
+			background-color: #ff8533;
+		}
+
+		#fiero {
+			display: flex;
+
+		}
+
+		.login-button:active {
+			transform: scale(0.95);
+		}
+
+/*fine navbar section --------------------------------------------------------------------------------------*/
+		
+/*scritta sotto --------------------------------------------------------------------------------------*/
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: rgb(57, 61, 70);
+		}
+
+		.center-screen {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.register-text {
+			color: white;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.register-link {
+			text-decoration: underline;
+			cursor: pointer;
+			color: orange;
+		}
+
+		.register-link:hover {
+			color: darkorange;
+		}
+
+		.register-link:focus {
+			outline: none;
+		}
+		
+	</style>
+</head>
+
+
+<body class="bg-dark">
+	
+	
+	
+	
+	<nav>
+		
+
+		<ul class="navbar">
+				<li><button class="login-button"> <a href="/basicPage/Registration.html"> Register</a></button></li>
+
+		
+		</ul>
+	</nav>
+
+
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<form class="login-form" id="myForm" method="post" action="/login">
+					<h1>Login</h1>
+					<div class="mb-3">
+						<label for="username" class="form-label">Username</label>
+						<input type="text" class="form-control" id="username" name="username" required>
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">Password</label>
+						<input type="password" class="form-control" id="password" name="password" required>
+					</div>
+					<button type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<body>
+	<div class="center-screen">
+		<div class="register-text">
+			<p>If you are not registered in SparkLab, <a href="/basicPage/Registration.html" class="register-link">register here</a></p>
+		</div>
+	</div>
+</body>
+	
+	
+	
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+		integrity="sha384-DIiA50KVdLUDNE1GbFUyBKSXvKX+HvqJgVjTFy8k+OQ7x3qO3OQ5t0s9MWyqXlk/"
+		crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+ssh ubuntu@172.31.6.1
+cmspabarac
+java -jar SparkLab-final.jar
+nohup java -jar SparkLab-final.jar &
+sudo netstat -tulpn
+kill 

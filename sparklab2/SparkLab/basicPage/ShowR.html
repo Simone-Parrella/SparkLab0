@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Risorsa</title>
+
+  	<!-- Includi il CSS di Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <style>
+
+    #centered {
+      display: inline-block; /* Per visualizzare l'elemento come blocco */
+      text-align: center; /* Per centrare il testo all'interno dell'elemento */
+    }
+    	img {
+			display: block;
+			margin: auto;
+			width: 30%;
+		}
+
+		#image0 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 75%;
+		}
+		#Layer_1{
+			width: 15%;
+			float:right;
+		}
+		#card1 {
+			background-color: black;
+			border: 2px solid orangered;
+			border-radius: 10px;
+		}
+
+
+    .commentBox {
+      background-color:black;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .comment-item {
+      margin-bottom: 10px;
+    }
+
+    .user-id {
+      font-weight: bold;
+    }
+
+    .comment-text {
+      margin-top: 5px;
+    }
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 20px; /* Aggiungi del padding per separare il contenuto dal bordo */
+  box-shadow: 0 2px 0px 0px orangered;
+    }
+
+    .navbar {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .navbar li {
+      margin-right: 20px;
+    }
+
+    .navbar li:first-child {
+      margin-left: 850px ;
+    }
+
+    .navbar li:last-child {
+      margin-left: auto;
+    }
+
+    .navbar li a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: color 0.3s;
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+    }
+
+    .navbar li a:hover {
+      color: orange;
+    }
+
+    .navbar li a:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 165, 0, 0.3);
+      border-radius: 5px;
+      z-index: -1;
+    }
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+      max-height: 100%;
+      width: 175px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .decorative-image {
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+    }
+
+    .decorative-image img {
+      height: 100px;
+    }
+
+    .login-button {
+      background-color: orangered;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #ff8533;
+    }
+
+    .login-button:active {
+      transform: scale(0.95);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .resource {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #999;
+      margin: 0;
+    }
+
+    .content {
+      margin-top: 20px;
+    }
+
+    .content p {
+      margin-bottom: 10px;
+    }
+
+    .content img {
+      max-width: 100%;
+      display: block;
+      margin-top: 10px;
+    }
+
+    #resGroup{
+      display: flex;
+    }
+
+    #metaGroup{
+      flex: 1;
+    }
+
+    #bodyGroup{
+      flex: 3;
+
+    }
+
+
+  </style>
+</head>
+<body  class="bg-dark"  onload="getRes()">
+
+
+    <nav>
+      <div class="logo">
+        <a href="#"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+      </div>
+      <ul class="navbar">
+        <li><a href="/basicPage/UserPage.html">User page</a></li>
+      </ul>
+      </div>
+    </nav>
+
+
+<div class="resource" id="resGroup">
+
+  <div id="metaGroup">
+
+  <h2 >Nome:</h2>
+  <p id="name">Nome della risorsa</p>
+
+  <h2 >Descrizione:</h2>
+  <p id="description">Descrizione della risorsa</p>
+
+  <h2>Tipo:</h2>
+  <p id="type">Tipo della risorsa</p>
+
+  <h2>Like</h2>
+  <p id="like">Numero di like: X</p>
+  </div>
+
+  <div id="bodyGroup">
+  <h2>Contenuto:</h2>
+  <div class="content" id="bodyConten">
+    <p id="body"></p>
+    <!-- Se il body è di tipo immagine -->
+    <!-- <img src="URL_dell'immagine" alt="Immagine della risorsa"> -->
+  </div>
+  </div>
+</div>
+    <div id="commentGroup">
+      <h2>Aggiungi commento</h2>
+      <form id="commentForm">
+        <textarea id="commentInput" rows="4" cols="50" placeholder="Inserisci il tuo commento"></textarea>
+        <button type="submit">Invia commento</button>
+      </form>
+    </div>
+
+    <div id="buttonContainer">
+      <button id="inputLike" onclick="submitLike(event)" style="display: none">LIKE</button>
+      <button id="remLike" onclick="removeLike(event)" style="display: none">DISLIKE</button>
+    </div>
+
+
+    <div class="right-section">
+      <div class="card medium-card">
+        <h2 class="list-title">Commenti</h2>
+        <div class="list-container">
+          <ul id="commentBox">
+          </ul>
+        </div>
+      </div>
+    </div>
+</body>
+
+<script>
+
+  function getRes(){
+    console.log("tu")
+    const urlParams = new URLSearchParams(window.location.search);
+    const pID= urlParams.get("id")
+    const rID=urlParams.get("Rid")
+    //console.log("id: "+pID )
+    //console.log("Rid: "+ rID )
+    getComments(pID, rID);
+
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ResourceAPI/resource/' +pID+ '/'+ rID)
+            .then(Res => Res.json())
+            .then(data=> {
+              console.log(data)
+              var name = document.getElementById("name")
+              var description = document.getElementById("description")
+              var type = document.getElementById("type")
+              var like = document.getElementById("like")
+              var dislike = document.getElementById("dislike")
+              var body = document.getElementById("body")
+              name.innerHTML = data.name
+              description.innerHTML = data.description
+              type.innerHTML = data.resourceType
+              fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/CommentAPI/likes/' + pID + '/' + rID)
+                      .then(response => response.text())  // Ottieni la risposta come testo
+                      .then(data => {
+                        like.innerHTML = "Numero di like: " + data;  // Aggiungi il testo al campo 'like'
+                      })
+                      .catch(error => {
+                        console.error("Errore durante la richiesta del conteggio dei like:", error);
+                      });
+              type.innerHTML = data.resourceType
+
+              // a seconda dei tipi di risorsa supportati riformatta la pagina
+
+              //se è un immagine aggiunge al campo body
+
+
+              // Gestione PDF
+              var conten = document.getElementById("bodyConten");
+              var embed = document.createElement("embed");
+              embed.src =
+                      "http://" +
+                      location.hostname +
+                      ":" +
+                      location.port +
+                      "/Sparklab/ResourceAPI/resourceBody/" +
+                      data.body;
+              console.log(data.type)
+
+              embed.type = data.resourceType;
+              embed.style.width = "100%";
+              embed.style.height = "900px";
+              conten.innerHTML = "";
+              conten.appendChild(embed);
+            })
+    controllaLike(pID, rID);
+  }
+  document.getElementById("commentForm").addEventListener("submit", submitComment);
+
+  function submitComment(event) {
+    event.preventDefault();
+    const commentInput = document.getElementById("commentInput").value;
+    const urlParams = new URLSearchParams(window.location.search);
+    const pID = urlParams.get("id");
+    const rID = urlParams.get("Rid");
+
+    const requestData = {
+      body: commentInput,
+      prgId: pID,
+      resId: rID
+    };
+
+
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/CommentAPI/comment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+            .then(() => {
+              location.reload();
+              document.getElementById("commentInput").value = "";
+            })
+            .catch((error) => {
+              console.error("Errore durante l'invio del commento:", error);
+            });
+  }
+
+  function controllaLike(pID, rID) {
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/CommentAPI/likeControl/' + pID + '/' + rID, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+            .then(response => response.json())
+            .then(result => {
+              console.log(result);
+
+              // Se il risultato della richiesta è true, mostra il bottone LIKE
+              if (result === false) {
+                document.getElementById('inputLike').style.display = 'block';
+              }
+              // Se il risultato della richiesta è false, mostra il bottone DISLIKE
+              else {
+                document.getElementById('remLike').style.display = 'block';
+              }
+            })
+            .catch(error => {
+              console.error("Errore durante la richiesta di controllo del like:", error);
+            });
+  }
+
+
+
+
+  function getComments(pID, rID) {
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/CommentAPI/comment/' + pID + '/' + rID)
+            .then(Res => Res.json())
+            .then(data => {
+              var commentBox = document.getElementById("commentBox");
+              // Pulisce il box dei commenti
+              for (var i = 0; i < data.length; i++) {
+                var commentItem = document.createElement("div");
+                commentItem.classList.add("comment-item");
+
+                var userId = document.createElement("span");
+                userId.classList.add("userId");
+                userId.textContent = "User: " + data[i].userId;
+                commentItem.appendChild(userId);
+
+                var commentText = document.createElement("p");
+                commentText.classList.add("comment-text");
+                commentText.textContent = data[i].body;
+                commentItem.appendChild(commentText);
+
+                commentBox.appendChild(commentItem);
+              }
+            });
+  }
+  //document.getElementById("inputLike").addEventListener("submit", submitLike);
+  function submitLike(event) {
+    event.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    const pID = urlParams.get("id");
+    const rID = urlParams.get("Rid");
+
+    const requestD = {
+      prgId: pID,
+      resId: rID
+    };
+
+
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/CommentAPI/like', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestD)
+    })
+            .then(() => {
+              location.reload();
+            })
+            .catch((error) => {
+              console.error("Errore durante l'invio del like:", error);
+            });
+  }
+
+  function removeLike(event) {
+    event.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    const pID = urlParams.get("id");
+    const rID = urlParams.get("Rid");
+
+    const requestD = {
+      prgId: pID,
+      resId: rID
+    };
+
+
+    fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/CommentAPI/likeRem', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestD)
+    })
+            .then(() => {
+              location.reload();
+            })
+            .catch((error) => {
+              console.error("Errore durante l'invio del like:", error);
+            });
+  }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<title>Pagina Personale</title>
+	<style>
+		img {
+			display: block;
+			margin: auto;
+			width: 30%;
+		}
+
+		#image0 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 75%;
+		}
+
+		#Layer_1 {
+			width: 15%;
+			float: right;
+		}
+		
+		/* info utente box------------------------------*/
+		#card1 {
+			background-color: dimgray;
+			border: 2px solid orangered;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+		}
+
+		#card1 p:first-child {
+			font-size: 24px;
+			margin-bottom: 10px;
+			font-family: Arial, sans-serif;
+			font-weight: bold;
+		}
+		/* fine info utente box------------------------------*/
+
+
+		/*nav bar section -------------------------------------------------------------------------------*/
+		
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		nav {
+			background-color: white;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			padding: 0 5px;
+			box-shadow: 0 4px 0px 0px #FF7F00;
+		}
+
+		.navbar {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			flex-grow: 1;
+			justify-content: center;
+		}
+
+		.navbar li {
+			margin-right: 20px;
+		}
+
+		.navbar li:first-child {
+			margin-right: 10px;
+		}
+
+		.navbar li:last-child {
+			margin-left: auto;
+		}
+
+		.navbar li a {
+			color: black;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+			transition: color 0.3s;
+			position: relative;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		.navbar li a:hover {
+			color: orange;
+		}
+
+		.navbar li a:hover::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 165, 0, 0.3);
+			border-radius: 5px;
+			z-index: -1;
+		}
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+			max-height: 100%;
+			width: 175px;
+			object-fit: contain;
+			cursor: pointer;
+		}
+
+		.login-button {
+			background-color: #FF7F00;
+			color: white;
+			border: none;
+			padding: 4px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.3s;
+		}
+
+		.login-button:hover {
+			background-color: #ff8533;
+		}
+
+		#fiero {
+
+			display: flex;
+
+
+		}
+
+
+		.login-button:active {
+			transform: scale(0.95);
+		}
+
+		/*fine navbar section --------------------------------------------------------------------------------------*/
+
+		/* loading rotating image section -------------------------------------------------------------*/
+		#rotatingImage {
+			position: fixed;
+			/* Imposta la posizione come fissa rispetto alla finestra del browser */
+			top: 50%;
+			/* Posiziona l'immagine a metà dell'altezza dello schermo */
+			left: 50%;
+			/* Posiziona l'immagine a metà della larghezza dello schermo */
+			transform: translate(-50%, -50%);
+			/* Sposta l'immagine al centro */
+			transform-origin: center center;
+			/* Imposta il punto di origine della trasformazione al centro */
+			animation: rotate 3s linear infinite;
+			/* Aggiunge l'animazione di rotazione infinita */
+			opacity: 1;
+			width: 5%;
+			z-index: 9999;
+		}
+
+		@keyframes rotate {
+			from {
+				transform: rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		.fade-out {
+			opacity: 0;
+			transition: opacity 0.5s ease-out;
+		}
+		/* fine loading rotating image section -------------------------------------------------------------*/
+		
+		
+		.card {
+  			margin-top: 100px;
+  			background: linear-gradient(to top, rgba(245, 245, 245, 0.1), rgba(245, 245, 245, 1));
+  			background: linear-gradient(to left, rgba(245, 245, 245, 0.1), rgba(245, 245, 245, 1));
+  			border-radius: 10px;
+  			border: 2px solid darkorange;
+  			max-width: 1000px;
+  			min-width: 600px;
+  			margin-left: auto;
+  			margin-right: auto;
+		}
+
+		
+		
+		.card-body {
+  			padding: 20px;
+  			margin-bottom: 20px;
+  			font-size: 30px;
+  			color: #000000;
+  			margin-bottom: 40px;
+  
+		}
+		
+
+
+
+		/* Stile per il popup message-----------------------------------------------------*/
+		.popup {
+			position: fixed;
+			top: 100px;
+			right: 20px;
+			background-color: #ffffff;
+			padding: 20px;
+			border: 1px solid #cccccc;
+			border-radius: 4px;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.popup button {
+			background-color: #007bff;
+			color: #ffffff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		/* fine Stile per il popup message-----------------------------------------------------*/
+		
+		
+		/* per l'amor del cielo non toccare la roba che segue (liste scorribili con relative box, cursori, eccetera)*/
+
+		.container2 {
+  			display: flex;
+  			justify-content: center;
+		}
+
+		#yourProjectContainer,
+		#Projcon {
+  			margin-top: 100px;
+  			flex: 1;
+  			text-align: center;
+		}
+
+		.card-container {
+  			height: 500px;
+  			overflow-y: scroll;
+  			scrollbar-width: none; /* Nasconde la barra di scorrimento standard */
+  			-ms-overflow-style: none; /* Nasconde la barra di scorrimento in Internet Explorer e Microsoft Edge */
+		}
+
+		.card-container::-webkit-scrollbar {
+  			width: 0; /* Nasconde la barra di scorrimento in WebKit */
+		}
+
+		.card-container::-webkit-scrollbar-thumb {
+  			background-color: #FF7F00; /* Colore della barra di scorrimento */
+  			border-radius: 4px; /* Raggio degli angoli della barra di scorrimento */
+		}
+
+		.card-container::-webkit-scrollbar-track {
+  			background-color: #f5f5f5; /* Colore dello sfondo della barra di scorrimento */
+		}
+
+		.card-container ul {
+  			padding: 0;
+  			margin: 0;
+  			list-style: none;
+  			margin-bottom: 10px;
+		}
+
+		.card-container li {
+  			max-width: 400px; /* Imposta la larghezza massima*/
+  			min-height: 100px; /* Imposta l'altezza minima*/
+  			width: auto; 
+  			display: flex;
+  			flex-direction: column;
+  			-content: center;
+  			align-items: center;
+  			overflow: auto;
+  			padding: 10px;
+  			margin-bottom: 20px;
+  			color: #333;
+  			font-size: 14px;
+  			background-color: #f5f5f5;
+  			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+
+		#id3 {
+  			text-align: center;
+		}
+
+
+		#yourProjectSub {
+  			text-align: center;
+		}
+
+		yourProjectSub h1 {
+  			margin-bottom: 10px;
+		}
+
+		#myPurch .card-container ul {
+  			padding: 0;
+  			margin: 0;
+  			list-style: none;
+  			margin-bottom: 10px;
+		}
+
+		#myPurch .card-container li {
+  			background-color: #f5f5f5;
+  			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  			padding: 10px;
+  			margin-bottom: 20px;
+  			color: #333;
+  			font-size: 14px;
+		}
+
+		#myPurch .card-container li:hover {
+  			cursor: pointer;
+  			background-color: #f0f0f0;
+		}
+
+		#myProj {
+  			margin-bottom: 100px;
+		}
+	</style>
+</head>
+
+
+
+
+<body>
+
+	<nav>
+		<div class="logo">
+			<a href="/basicPage/HomePage.html"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+		</div>
+
+		<ul class="navbar">
+			<li><a href="/basicPage/ProjectCreation.html">Create new project</a></li>
+
+
+			<li><button class="login-button"> <a href="/logout"> Logout</a></button></li>
+
+
+		</ul>
+
+		<img id="rotatingImage" src="pages_resources/micro.svg" alt="Rotating Image">
+
+
+	</nav>
+
+
+
+
+
+
+
+	<div id="user"></div>
+
+	<div class="popup" id="popup">
+		<button onclick="closePopup()">Close</button>
+	
+
+	</div>
+
+
+
+
+	<div class="container2">
+		<div id="yourProjectContainer">
+			<h1 id="id1">YOUR PROJECTS:</h1>
+			<div id="myProj" class="card-container">
+				<ul>
+
+				</ul>
+			</div>
+		</div>
+
+		<div id="Projcon">
+			<h1 id="id2">WORKING IN:</h1>
+			<div id="progetti" class="card-container">
+				<ul>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="flex-container">
+			<div id="yourProjectSub">
+				<h1 id="id3">YOUR SUBSCRIPTIONS:</h1>
+				<div id="myPurch" class="card-container"></div>
+			</div>
+
+</body>
+
+</html>
+
+
+
+
+<script>
+	const apiUrl = 'http://' + location.hostname + ':' + location.port + '/Sparklab/UserAPI/users/sessionWithProjects';
+
+	fetch(apiUrl)
+		.then(function (response) {
+			if (!response.ok) {
+				throw new Error('User not found');
+			}
+			return response.json();
+		})
+		.then(function (data) {
+			const userDiv = document.getElementById('user');
+			userDiv.innerHTML =
+				'<div class="container">' +
+  					'<div class="user-info-container">' +
+    					'<div class="card">' +
+      					'<div class="card-body">' +
+        					'<p class="card-text text-center"><strong>USER INFOS:</strong> </p>' +
+        					'<p class="card-text"><strong>ID:</strong> ' + data.id + '</p>' +
+        					'<p class="card-text"><strong>NAME:</strong> ' + data.name + '</p>' +
+        					'<p class="card-text"><strong>SURNAME:</strong> ' + data.surname + '</p>' +
+        					'<p class="card-text"><strong>USERNAME:</strong> ' + data.nickname + '</p>' +
+        					'<p class="card-text"><strong>EMAIL:</strong> ' + data.email + '</p>' +
+        					'<p class="card-text"><strong>BIRTH DATE:</strong> <span id="formattedBirthday"></span></p>' +
+      					'</div>' +
+    					'</div>' +
+  					'</div>' +
+				'</div>';
+
+			const formattedBirthday = new Date(data.birthday).toLocaleDateString('en-GB');
+			document.getElementById('formattedBirthday').textContent = formattedBirthday;
+
+			const popup = document.getElementById('popup');
+
+			popup.innerHTML = '<div class="popup" id="popup">' +
+				'<button onclick="closePopup()">Chiudi</button>' +
+				'<h4 style=" color: black;"">Benvenuto!</h4>' +
+				data.name +
+
+				'</div>'
+				;
+
+			const userDiv2 = document.getElementById('progetti');
+			const userProj = document.getElementById('myProj');
+			const userPurch = document.getElementById('myPurch');
+
+
+
+
+// GESIONE PURCHASES
+
+			data.purchaseP.forEach(function (element) {
+  			console.log(element);
+  			const part0 = document.createElement("div");
+  			const purchName = document.createElement("strong");
+ 			 const purchDescr = document.createElement("p");
+
+ 			 purchName.style.textAlign = "center";
+ 			 purchName.textContent = element.name;
+  			purchName.style.fontSize = "2.5em";
+
+			part0.style.maxWidth = "800px"; // Imposta la larghezza massima a 500px
+    		part0.style.margin = "0 auto"; // Centra il container orizzontalmente
+			part0.style.border = "3px solid #FF7F00";
+			part0.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
+
+  			purchDescr.style.margin = "auto";
+  			purchDescr.style.textAlign = "center";
+  			purchDescr.textContent = element.description;
+  			purchDescr.style.whiteSpace = "normal"; // Aggiunto white-space normal per mostrare la descrizione su più righe
+
+
+  			part0.style.backgroundColor = "#f5f5f5";
+  			part0.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+  			part0.style.padding = "10px";
+  			part0.style.marginBottom = "20px";
+  			part0.style.color = "#333";
+  			part0.style.fontSize = "18px";
+  			part0.appendChild(purchName);
+  			part0.appendChild(purchDescr);
+
+  			purchName.addEventListener("click", function () {
+    			
+    			window.location.href =
+      			"http://" +
+      			location.hostname +
+      			":" +
+      			location.port +
+      			"/basicPage/ProjectPage4.html?id=" +
+      			element.id;
+  			});
+
+  			purchName.addEventListener("mouseover", function () {
+    			this.style.color = "#FF7F00";
+  			});
+
+  			purchName.addEventListener("mouseout", function () {
+    			this.style.color = "#333";
+  			});
+
+ 			purchName.addEventListener("mouseover", function () {
+    			this.style.cursor = "pointer";
+  			});
+
+  			userPurch.append(part0);
+			});
+
+
+
+
+
+
+// GESIONE DEI DUE TIPI DI PROGETTI
+
+			data.projects.forEach(function (element) {
+  			console.log(element);
+  			const part0 = document.createElement("div");
+  			const projName = document.createElement("strong");
+  			const projDescr = document.createElement("p");
+
+  			projName.style.textAlign = "center";
+  			projName.textContent = element.name;
+  			projName.style.fontSize = "2.5em";
+  			
+  			part0.style.maxWidth = "800px"; // Imposta la larghezza massima a 500px
+    		part0.style.margin = "0 auto";
+    		part0.style.border = "3px solid #FF7F00";
+    		part0.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
+
+  			projDescr.style.margin = "auto";
+  			projDescr.style.textAlign = "center";
+  			projDescr.textContent = element.description;
+  			projDescr.style.whiteSpace = "normal"; // Aggiunto white-space normal per mostrare la descrizione su più righe
+
+
+  			part0.style.backgroundColor = "#f5f5f5";
+  			part0.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+  			part0.style.padding = "10px";
+  			part0.style.marginBottom = "20px";
+  			part0.style.color = "#333";
+  			part0.style.fontSize = "18px";
+  			part0.appendChild(projName);
+  			part0.appendChild(projDescr);
+
+  			if (element.ownerId == data.id) {
+    			
+
+    			projName.addEventListener("click", function () {
+      
+      			window.location.href =
+        			"http://" +
+        			location.hostname +
+        			":" +
+        			location.port +
+        			"/basicPage/ProjectPage2.html?id=" +
+        			element.id;
+    			});
+
+    			projName.addEventListener("mouseover", function () {
+      			this.style.color = "#FF7F00";
+    			});
+
+    			projName.addEventListener("mouseout", function () {
+      			this.style.color = "#333";
+    			});
+
+    			projName.addEventListener("mouseover", function () {
+      			this.style.cursor = "pointer";
+    			});
+
+    			userProj.append(part0);
+    			console.log(element.ownerId + "==" + data.id);
+  			} else {
+    			projName.addEventListener("click", function () {
+      			
+      			window.location.href =
+        			"http://" +
+        			location.hostname +
+        			":" +
+        			location.port +
+        			"/basicPage/ProjectPage.html?id=" +
+        			element.id;
+    			});
+
+    			projName.addEventListener("mouseover", function () {
+      			this.style.color = "#FF7F00";
+    			});
+
+    			projName.addEventListener("mouseout", function () {
+      			this.style.color = "#333";
+    			});
+
+    			projName.addEventListener("mouseover", function () {
+      			this.style.cursor = "pointer";
+    			});
+
+    			userDiv2.append(part0);
+  			}
+			});
+
+		});
+
+
+
+
+
+// GESIONE LOGO ROTEANTE
+
+	// Ferma la rotazione dopo 3 secondi e fa scomparire 
+	setTimeout(function () {
+		var rotatingImage = document.getElementById('rotatingImage');
+		rotatingImage.style.animation = 'none';
+		rotatingImage.classList.add('fade-out');
+		setTimeout(function () {
+			rotatingImage.style.display = 'none';
+		}, 500);
+	}, 3000);
+
+
+	document.addEventListener('DOMContentLoaded', function () {
+		setTimeout(function () {
+			var popup = document.getElementById('popup');
+			if (popup) {
+				popup.style.display = 'none';
+			}
+		}, 5000);
+	});
+</script>
+</bodyclass="bg-dark">
+</body>
+
+</html>

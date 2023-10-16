@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Homepage</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: black;
+			color: white;
+
+
+		}
+
+
+		img {
+			display: block;
+			margin: auto;
+			width: 30%;
+		}
+
+		#image0 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 75%;
+		}
+		#Layer_1{
+			width: 15%;
+			float:right;
+		}
+		#card1 {
+			background-color: black;
+			border: 2px solid orangered;
+			border-radius: 10px;
+		}
+		
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 20px; /* Aggiungi del padding per separare il contenuto dal bordo */
+  box-shadow: 0 2px 0px 0px orangered;
+    }
+
+    .navbar {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .navbar li {
+      margin-right: 20px;
+    }
+
+    .navbar li:first-child {
+      margin-left: 850px ;
+    }
+
+    .navbar li:last-child {
+      margin-left: auto;
+    }
+
+    .navbar li a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: color 0.3s;
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+    }
+
+    .navbar li a:hover {
+      color: orange;
+    }
+
+    .navbar li a:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 165, 0, 0.3);
+      border-radius: 5px;
+      z-index: -1;
+    }
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+      max-height: 100%;
+      width: 175px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .decorative-image {
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+    }
+
+    .decorative-image img {
+      height: 100px;
+    }
+
+    .login-button {
+      background-color: orangered;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #ff8533;
+    }
+
+    .login-button:active {
+      transform: scale(0.95);
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .container {
+      margin-top: 50px;
+      background-color: #222;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      background-color: rgb(53, 58, 63);
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #276c98;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #276c98;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    li {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .btn-primary {
+      background-color: #276c98;
+      border-color: #276c98;
+    }
+
+    .btn-primary:hover {
+      background-color: #0e5071;
+      border-color: #0e5071;
+    }
+
+    #requestsDiv {
+      float: right;
+      width: 40%;
+    }
+	</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg">
+		<div class="logo">
+		  <a href="#"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+		</div>
+		<ul class="navbar">
+		 
+		  <li><a href="/basicPage/UserPage.html">User page</a></li>
+	   
+		  
+		</ul>
+		</div>
+	  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">My Website</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="/basicPage/UserPage.html">Your personal page</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">Logout</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Services</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Contact</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<div class="container mt-5">
+	<h1>Welcome to My Website</h1>
+
+	<form id="searchForm" class="mt-4">
+		<div class="form-group">
+			<input type="text" class="form-control" id="comments" placeholder="Search Comments">
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>
+
+	<div id="comment_obj" class="mt-4"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

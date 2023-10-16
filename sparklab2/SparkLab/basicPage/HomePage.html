@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Homepage</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: rgb(57, 61, 70);
+			color: white;
+		}
+
+
+
+		img {
+			display: block;
+			margin: auto;
+			width: 30%;
+
+		}
+
+		#image0 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 75%;
+		}
+
+
+		.image {
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.image2 {
+  			position: right;
+  			margin-top: 100px;
+  			width: 100%;
+  
+  
+		}
+
+		.image img {
+			transition: transform 0.5s ease;
+		}
+
+		.image:hover img {
+			transform: scale(1.2);
+		}
+		
+		.image2 img {
+			transition: transform 0.5s ease;
+		}
+		
+		.image2:hover img {
+			transform: scale(1.2);
+		}
+
+		#Layer_1 {
+			width: 15%;
+			float: right;
+		}
+
+		#card1 {
+			background-color: black;
+			border: 2px solid orangered;
+			border-radius: 10px;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		nav {
+			background-color: white;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			padding: 0 5px;
+			box-shadow: 0 4px 0px 0px orangered;
+		}
+
+		.navbar {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			flex-grow: 1;
+			justify-content: center;
+		}
+
+		.navbar li {
+			margin-right: 20px;
+		}
+
+		.navbar li:first-child {
+			margin-right: 10px;
+		}
+
+		.navbar li:last-child {
+			margin-left: auto;
+		}
+
+		.navbar li a {
+			color: black;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+			transition: color 0.3s;
+			position: relative;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		.navbar li a:hover {
+			color: orange;
+		}
+
+		.navbar li a:hover::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 165, 0, 0.3);
+			border-radius: 5px;
+			z-index: -1;
+		}
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+			max-height: 100%;
+			width: 175px;
+			object-fit: contain;
+			cursor: pointer;
+		}
+
+		.login-button {
+			background-color: orangered;
+			color: white;
+			border: none;
+			padding: 4px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.3s;
+		}
+
+		.login-button:hover {
+			background-color: #ff8533;
+		}
+
+		.logo-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+
+		.logo-image {
+			max-width: 100%;
+			max-height: 500px;
+		}
+
+		.container {
+			margin-top: 50px;
+			background-color: #222;
+			border-radius: 5px;
+			padding: 20px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			margin-left: 100px;
+		}
+		
+		.container2 {
+			margin-top: 50px;
+  			background-color: rgb(57, 61, 70);
+  			border-radius: 5px;
+  			padding: 20px;
+  			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  			position: relative;
+  			padding-bottom: 150px; 
+			
+		}
+
+		h1 {
+			font-size: 24px;
+			color: #276c98;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 16px;
+			color: #fff;
+		}
+
+		h2 {
+			font-size: 20px;
+			color: #276c98;
+			margin-top: 30px;
+			margin-bottom: 10px;
+		}
+
+		ul {
+			margin-left: 20px;
+		}
+
+		li {
+			font-size: 16px;
+			color: #fff;
+			margin-bottom: 5px;
+		}
+
+		.btn-primary {
+			background-color: #276c98;
+			border-color: #276c98;
+		}
+
+		.btn-primary:hover {
+			background-color: #0e5071;
+			border-color: #0e5071;
+		}
+
+		#requestsDiv {
+			float: right;
+			width: 40%;
+		}
+		
+		#brainsparklab-image {
+  		margin-left: auto;
+  		margin-top: auto;
+  		
+		}
+		
+		.custom-text {
+  		position: absolute;
+  		top: 40px; /* Regola il valore del margine superiore */
+  		left: 64.5%;
+		}
+
+		.text {
+  		color: white;
+  		font-size: 20px;
+  
+		}
+
+		.scrollable-list {
+  		max-height: 400px; /* Altezza massima desiderata per la lista */
+  		overflow-y: auto; /* Abilita lo scorrimento verticale */
+  		  
+		}
+		
+		.scrollable-list ul {
+  		list-style-type: none; /* Rimuovi i punti di elenco predefiniti */
+  		padding: 0; 
+		}
+
+		.scrollable-list li {
+ 		 padding: 10px; 
+  		background-color: darkslategrey; 
+  		margin-bottom: 5px; 
+		}
+
+		.scrollable-list li:hover {
+  		background-color: darkorange; 
+		}
+		
+	</style>
+</head>
+
+<body>
+	<nav>
+		<div class="logo">
+			<a href="/basicPage/HomePage.html"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+		</div>
+
+		<ul class="navbar">
+			<li><a href="/basicPage/UserPage.html">Personal Page</a></li>
+			<li><button class="login-button"> <a href="/logout"> Logout</a></button></li>
+		</ul>
+	</nav>
+
+	<div class="image">
+		<img src="pages_resources/sparklabSVG.svg" alt="Logo">
+	</div>
+
+
+
+
+	<div class="container2 d-flex justify-content-between">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Search for a project!!</h1>
+
+        <form id="searchForm" class="mt-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="projectName" placeholder="Search Project">
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div id="projectList" class="mt-4 scrollable-list">
+          
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h1>Search for a user!!</h1>
+
+        <form id="searchUserForm" class="mt-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="userName" placeholder="Search User">
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div id="userList" class="mt-4 scrollable-list">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="image2">
+    <a href="/basicPage/Sperimentazione.html">
+      <img id="brainsparklab-image" src="pages_resources/brainsparklab.svg" alt="Logo">
+    </a>
+  </div>
+
+  <div class="custom-text">
+    <span class="text">TRY OUR IA TO SEARCH FOR A PROJECT</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script>
+		document.getElementById("searchForm").addEventListener("submit", function (event) {
+			event.preventDefault();
+			var projectName = document.getElementById("projectName").value;
+			searchProjects(projectName);
+		});
+
+		document.getElementById("searchUserForm").addEventListener("submit", function (event) {
+			event.preventDefault();
+			var userName = document.getElementById("userName").value;
+			searchUsers(userName);
+		});
+
+		function searchProjects(projectName) {
+			fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/for/' + encodeURIComponent(projectName))
+				.then(function (response) {
+					if (response.ok) {
+						return response.json();
+					} else {
+						throw new Error("Error: " + response.status);
+					}
+				})
+				.then(function (projectList) {
+					displayProjectList(projectList);
+				})
+				.catch(function (error) {
+					console.error(error);
+				});
+		}
+
+		function searchUsers(userName) {
+			fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/UserAPI/users/for/' + encodeURIComponent(userName))
+				.then(function (response) {
+					if (response.ok) {
+						return response.json();
+					} else {
+						throw new Error("Error: " + response.status);
+					}
+				})
+				.then(function (userList) {
+					displayUserList(userList);
+				})
+				.catch(function (error) {
+					console.error(error);
+				});
+		}
+
+		function displayProjectList(projectList) {
+			var projectListContainer = document.getElementById("projectList");
+			projectListContainer.innerHTML = "";
+
+			if (projectList.length === 0) {
+				projectListContainer.innerHTML = "<p>No projects found.</p>";
+				return;
+			}
+
+			var ul = document.createElement("ul");
+			projectList.forEach(function (project) {
+				var li = document.createElement("li");
+				var projectName = document.createElement("span");
+				projectName.textContent = project.name;
+				projectName.style.cursor = "pointer";
+				projectName.addEventListener("click", function () {
+					window.location.href = 'http://' + location.hostname + ':' + location.port + '/basicPage/ProjectPage3.html?id=' + project.id;
+				});
+				li.appendChild(projectName);
+
+				var requestButton = document.createElement("button");
+				requestButton.textContent = "Request";
+				requestButton.addEventListener("click", function () {
+					sendRequestForProject(project.id, requestButton);
+				});
+				li.appendChild(requestButton);
+
+				ul.appendChild(li);
+			});
+
+			projectListContainer.innerHTML = "<h2>Project matches</h2>";
+			projectListContainer.appendChild(ul);
+		}
+
+		function displayUserList(userList) {
+			var userListContainer = document.getElementById("userList");
+			userListContainer.innerHTML = "";
+
+			if (userList.length === 0) {
+				userListContainer.innerHTML = "<p>No users found.</p>";
+				return;
+			}
+
+			var ul = document.createElement("ul");
+			userList.forEach(function (user) {
+				var li = document.createElement("li");
+				var userName = document.createElement("span");
+				userName.textContent = user.nickname;
+				userName.style.cursor = "pointer";
+				userName.addEventListener("click", function () {
+					window.location.href = 'http://' + location.hostname + ':' + location.port + '/basicPage/UserPage2.html?id=' + user.id;
+				});
+				li.appendChild(userName);
+
+				ul.appendChild(li);
+			});
+			userListContainer.appendChild(ul);
+
+			var userListTitle = document.createElement("h2");
+			userListTitle.textContent = "User matches";
+			userListContainer.insertBefore(userListTitle, userListContainer.firstChild);
+		}
+
+
+		function sendRequestForProject(projectId, buttonElement) {
+			fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/request/' + projectId, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then(function (response) {
+					if (response.ok) {
+						buttonElement.disabled = true;
+						buttonElement.textContent = "Requested";
+					} else {
+						throw new Error("Error: " + response.status);
+					}
+				})
+				.catch(function (error) {
+					console.error(error);
+				});
+		}
+	</script>
+</body>
+
+</html>

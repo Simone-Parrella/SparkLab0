@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sperimentazione AI</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color:rgb(57, 61, 70);
+            color: white;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            width: 30%;
+        }
+
+        #image0 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
+        }
+
+        #Layer_1{
+            width: 15%;
+            float:right;
+        }
+
+        #card1 {
+            background-color: black;
+            border: 2px solid orangered;
+            border-radius: 10px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 0 5px;
+            box-shadow: 0 4px 0px 0px orangered;
+        }
+
+        .navbar {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar li:first-child {
+            margin-right: 10px ;
+        }
+
+        .navbar li:last-child {
+            margin-left: auto;
+        }
+
+        .navbar li a {
+            color: black;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: color 0.3s;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .navbar li a:hover {
+            color: orange;
+        }
+
+        .navbar li a:hover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 165, 0, 0.3);
+            border-radius: 5px;
+            z-index: -1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: flex-start;
+            max-width: 30%;
+        }
+
+        .logo img {
+            max-height: 100%;
+            width: 175px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .login-button {
+            background-color: orangered;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #ff8533;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-image {
+            max-width: 100%;
+            max-height: 500px;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #222;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #276c98;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #276c98;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+
+
+		/*bottone visualizzazione*/
+		
+        .btn-primary {
+            background-color: #276c98;
+            border-color: #276c98;
+        }
+
+        .btn-primary:hover {
+            background-color: #0e5071;
+            border-color: #0e5071;
+        }
+
+        #requestsDiv {
+            float: right;
+            width: 40%;
+        }
+        
+        
+        
+        
+       /*project list container e le box dei progetti con pulsanti eccetera*/ 
+        
+        .project-list-container {
+        	margin-top: 20px;
+    	}
+
+    	.project-list-container h2 {
+        	color: #fff;
+        	font-size: 24px;
+        	margin-bottom: 10px;
+    	}
+
+    	.project-list {
+        	list-style: none;
+        	padding: 0;
+        	margin: 0;
+    	}
+
+    	project-item {
+        	margin-bottom: 10px;
+    	}
+
+    	.project-box {
+        	background-color: #f2f2f2;
+        	border-radius: 5px;
+        	padding: 10px;
+        	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        	display: flex;
+        	flex-direction: column;
+        	transition: background-color 0.3s ease;
+    	}
+
+    	.project-box:hover {
+        	background-color: #e0e0e0;
+    	}
+
+    	.project-name {
+        	font-weight: bold;
+        	font-size: 24px; 
+        	color: #333;
+        	cursor: pointer;
+        	margin-bottom: 5px;
+    	}
+
+    	.project-descr {
+        	color: #555;
+        	margin-top: 5px;
+    	}
+
+    	.request-button {
+        	background-color: #3282ef;
+        	color: #fff;
+        	border: none;
+        	border-radius: 5px;
+        	padding: 5px 10px;
+        	cursor: pointer;
+        	font-weight: bold;
+        	transition: background-color 0.3s ease;
+        	align-self: flex-end;
+    	}
+
+    	.request-button:hover {
+        	background-color: #1854b6;
+    	}
+
+    	.no-projects {
+        	color: #555;
+    	}
+
+    	.message {
+        	color: red;
+        	margin-top: 10px;
+    	}
+    </style>
+</head>
+
+<body>
+<nav>
+    <div class="logo">
+        <a href="/basicPage/HomePage.html"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+    </div>
+
+    <ul class="navbar">
+        <li><a href="/basicPage/UserPage.html">Personal Page</a></li>
+        <li><button class="login-button"> <a href="/logout"> Logout</a></button></li>
+    </ul>
+</nav>
+
+<div class="logo-container">
+    <img src="pages_resources/brainsparklab.svg" alt="Logo" class="logo-image">
+</div>
+
+<div class="container mt-5" >
+    <h1 id="message">Search projects by description with AI Powered by Sparklab-Brain</h1>
+
+    <form id="searchForm" class="mt-4">
+        <div class="form-group">
+            <input type="text" class="form-control" id="projectName" placeholder="Insert Description">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+
+    <div class="project-list-container">
+    <h2>Projects that may be of your interest</h2>
+    <div id="projectList">
+        <!-- Project list will be dynamically populated here -->
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById("searchForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var projectName = document.getElementById("projectName").value;
+        searchProjects(projectName);
+    });
+
+    function searchProjects(projectName) {
+        fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/brain/' + encodeURIComponent(projectName))
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    elem= document.getElementById("message")
+                    elem.innerHTML= "Brain not available"
+                    elem.style.color="red"
+                    setTimeout(()=>{elem.innerHTML="Search projects by description with AI Powered by Sparklab-Brain"
+                    elem.style.color="white"},3000)
+                    throw new Error("Error: " + response.status);
+                }
+            })
+            .then(function(projectList) {
+                displayProjectList(projectList);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
+
+
+     function displayProjectList(projectList) {
+        var projectListContainer = document.getElementById("projectList");
+        projectListContainer.innerHTML = "";
+
+        if (projectList.length === 0) {
+            projectListContainer.innerHTML = "<p class='no-projects'>No projects found.</p>";
+            return;
+        }
+
+        var ul = document.createElement("ul");
+        ul.classList.add("project-list");
+        projectList.forEach(function(project) {
+            var li = document.createElement("li");
+            li.classList.add("project-item");
+            var projectBox = document.createElement("div");
+            projectBox.classList.add("project-box");
+
+            var projectName = document.createElement("span");
+            projectName.classList.add("project-name");
+            projectName.textContent = project.name;
+            projectName.addEventListener("click", function() {
+                window.location.href = 'http://' + location.hostname + ':' + location.port + '/basicPage/ProjectPage3.html?id=' + project.id;
+            });
+            projectBox.appendChild(projectName);
+
+            var projectDescr = document.createElement("div");
+            projectDescr.classList.add("project-descr");
+            var projectDescrTitle = document.createElement("span");
+            projectDescrTitle.textContent = "Description: ";
+            projectDescrTitle.style.fontWeight = "bold";
+            var projectDescrText = document.createElement("span");
+            projectDescrText.textContent = project.description;
+            projectDescr.appendChild(projectDescrTitle);
+            projectDescr.appendChild(document.createElement("br"));
+            projectDescr.appendChild(projectDescrText);
+            projectBox.appendChild(projectDescr);
+
+            var requestButton = document.createElement("button");
+            requestButton.classList.add("request-button");
+            requestButton.textContent = "Request";
+            requestButton.addEventListener("click", function() {
+                sendRequestForProject(project.id, requestButton);
+            });
+            projectBox.appendChild(requestButton);
+
+            li.appendChild(projectBox);
+            ul.appendChild(li);
+        });
+
+        projectListContainer.appendChild(ul);
+    }
+
+
+
+    function sendRequestForProject(projectId, buttonElement) {
+        fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project/request/' + projectId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function(response) {
+                if (response.ok) {
+                    buttonElement.disabled = true;
+                    buttonElement.textContent = "Requested";
+                } else {
+                    throw new Error("Error: " + response.status);
+                }
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
+</script>
+</body>
+
+</html>

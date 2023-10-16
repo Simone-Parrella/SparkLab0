@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<meta charset="UTF-8">
+
+	<title>Pagina di Creazione Progetto</title>
+
+	<!-- Includi il CSS di Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<style>
+		
+/*nav bar section -------------------------------------------------------------------------------*/
+		
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		nav {
+			background-color: white;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			padding: 0 5px;
+			box-shadow: 0 4px 0px 0px #FF7F00;
+		}
+
+		.navbar {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			flex-grow: 1;
+			justify-content: center;
+		}
+
+		.navbar li {
+			margin-right: 20px;
+		}
+
+		.navbar li:first-child {
+			margin-right: 10px;
+		}
+
+		.navbar li:last-child {
+			margin-left: auto;
+		}
+
+		.navbar li a {
+			color: black;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+			transition: color 0.3s;
+			position: relative;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		.navbar li a:hover {
+			color: orange;
+		}
+
+		.navbar li a:hover::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 165, 0, 0.3);
+			border-radius: 5px;
+			z-index: -1;
+		}
+
+		.logo {
+			display: flex;
+			align-items: flex-start;
+			max-width: 30%;
+		}
+
+		.logo img {
+			max-height: 100%;
+			width: 175px;
+			object-fit: contain;
+			cursor: pointer;
+		}
+
+		.login-button {
+			background-color: #FF7F00;
+			color: white;
+			border: none;
+			padding: 4px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.3s;
+		}
+
+		.login-button:hover {
+			background-color: #ff8533;
+		}
+
+		#fiero {
+
+			display: flex;
+
+
+		}
+
+
+		.login-button:active {
+			transform: scale(0.95);
+		}
+
+		/*fine navbar section --------------------------------------------------------------------------------------*/
+		
+		
+		
+		
+		/* logo di sparklab animato-------------------------------------------- */
+		.image img {
+			transition: transform 0.5s ease;
+		}
+
+		.image:hover img {
+			transform: scale(1.2);
+		}
+
+		img {
+			display: block;
+			margin: auto;
+			width: 30%;
+
+		}
+
+		.image {
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		/* fine logo di sparklab animato-------------------------------------------- */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/* messaggio che si apre con info-------------------------------------------- */
+		.popup-container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: none;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+		}
+
+		.popup {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 4px;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+			text-align: center;
+		}
+
+		.popup button {
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		h4,p{
+			color: black;
+		}
+		/* fine messaggio che si apre con info-------------------------------------------- */
+		
+		
+		
+		
+		
+		
+		
+		/* sezione del form--------------------------------------------------------- */
+		body {
+			background-color: rgb(57, 61, 70);
+			color: #fff;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		#myForm {
+			margin: 0 auto;
+			max-width: 500px;
+			padding: 20px;
+			background-color: #444;
+			border-radius: 10px;
+			margin-top: 50px;
+			text-align: center;
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: orange;
+		}
+
+		input {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: rgb(0, 0, 0);
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="date"] {
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: rgb(240, 107, 26);
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+		/* sezione del form--------------------------------------------------------- */
+		
+		
+		
+		
+
+		
+
+		
+
+		
+
+		
+		
+		
+		
+		
+		.my-button-container {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.my-button-container button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.my-button-container button:hover {
+	background-color: #45a049;
+}
+
+	
+	</style>
+</head>
+
+<body>
+
+
+
+
+
+	<nav>
+		<div class="logo">
+			<a href="/basicPage/HomePage.html"><img src="pages_resources/sparklabSVG.svg" alt="Logo"></a>
+		</div>
+
+		<ul class="navbar">
+			<li><a href="/basicPage/UserPage.html">Your Page</a></li>
+
+
+			<li><button class="login-button"> <a href="/logout"> Logout</a></button></li>
+
+		
+		</ul>
+	</nav>
+
+
+
+
+		
+		<div class="image">
+			<img src="pages_resources/sparklabSVG.svg" alt="Logo">
+
+		</div>
+		
+		
+		
+		<bott class="my-button-container">
+		<button onclick="openPopup()">Info</button>
+		
+	</bott>
+		
+		
+	<div id="popup-container" class="popup-container">
+		<div class="popup">
+			<h4 >DISCLAIMER!</h4>
+			<p>You can actually define project areas ONLY during the project creation!</p>
+			<button onclick="closePopup()">Close</button>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	
+	<form id="myForm">
+
+		<div><label>PROJECT CREATION FORM</label></div>
+
+		<label for="name">NAME:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="description">DESCRIPTION:</label>
+		<input type="text" id="description" name="description" required>
+
+		<div id="projectAreas">
+			<label for="projectArea1">PROJECT AREA 1:</label>
+			<input type="text" id="projectArea1" name="projectArea" required>
+		</div>
+
+		<button type="button" id="addProjectArea">ADD PROJECT AREA</button>
+
+		<input type="submit" value="CREATE">
+
+	</form>
+
+
+
+
+
+	<script>
+		const form = document.querySelector("#myForm");
+		const projectAreasContainer = document.querySelector("#projectAreas");
+		const addProjectAreaButton = document.querySelector("#addProjectArea");
+		let projectAreaCounter = 1;
+
+		addProjectAreaButton.addEventListener("click", function () {
+			projectAreaCounter++;
+
+			const label = document.createElement("label");
+			label.textContent = "PROJECT AREA " + projectAreaCounter + ":";
+			label.setAttribute("for", "projectArea" + projectAreaCounter);
+
+			const input = document.createElement("input");
+			input.setAttribute("type", "text");
+			input.setAttribute("id", "projectArea" + projectAreaCounter);
+			input.setAttribute("name", "projectArea");
+			input.setAttribute("required", "");
+
+			projectAreasContainer.appendChild(label);
+			projectAreasContainer.appendChild(input);
+		});
+
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+
+			const formData = new FormData(this);
+			const data = {};
+
+			formData.forEach(function (value, key) {
+				if (key === "projectArea") {
+					if (!data.projectAreas) {
+						data.projectAreas = [];
+					}
+					data.projectAreas.push(value);
+				} else {
+					data[key] = value;
+				}
+			});
+
+			fetch('http://' + location.hostname + ':' + location.port + '/Sparklab/ProjectAPI/project', {
+				method: 'post',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+				.then(response => {
+					console.log(response);
+					window.location.href = "http://" + location.hostname + ":" + location.port + "/basicPage/UserPage.html";
+				});
+		});
+	</script>
+
+	<script>
+		// Aggiungi l'effetto di vibrazione all'immagine al passaggio del mouse
+		var logoImage = document.querySelector('.navbar img');
+		logoImage.addEventListener('mouseover', function () {
+			this.style.transform = 'rotate(5deg)';
+		});
+
+		logoImage.addEventListener('mouseout', function () {
+			this.style.transform = 'none';
+		});
+
+		function openPopup() {
+			var popupContainer = document.getElementById('popup-container');
+			popupContainer.style.display = 'flex';
+		}
+
+		// Funzione per chiudere il popup
+		function closePopup() {
+			var popupContainer = document.getElementById('popup-container');
+			popupContainer.style.display = 'none';
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+image:
+    name: maven:3.8.2-openjdk-17
+    pull_policy: if-not-present
+
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - deploy
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  before_script:
+    - ls
+    - cd SparkLab
+  script:
+    - pwd
+    - mvn clean compile
+    - echo "Compile complete."
+  
+  artifacts:
+    paths:
+     - "/builds/sparklab-team/sparklab2/SparkLab/target/*.jar"
+   
+    
+  
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - echo "Running unit tests... This will take about 60 seconds."
+    - ls
+    - cd SparkLab
+    - mvn test
+
+deploy-job:      # This job runs in the deploy stage.
+  image:
+      name: alpine
+      pull_policy: if-not-present
+  
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  before_script:
+      - apk add sshpass
+      - apk add openssh-client
+      - eval $(ssh-agent -s)
+      - ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
+      - sshpass -p cmspabarac ssh -o StrictHostKeyChecking=no ubuntu@172.31.6.1 ls
+      - sshpass -p cmspabarac ssh-copy-id ubuntu@172.31.6.1
+  
+
+  script:
+      - scp SparkLab/target/SparkLab-0.0.1-SNAPSHOT-jar-with-dependencies.jar ubuntu@172.31.6.1:/home/ubuntu
+     
+    
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'main'
